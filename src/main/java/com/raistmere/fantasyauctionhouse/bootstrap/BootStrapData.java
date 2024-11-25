@@ -1,6 +1,8 @@
 package com.raistmere.fantasyauctionhouse.bootstrap;
 
+import com.raistmere.fantasyauctionhouse.domains.InventoryItem;
 import com.raistmere.fantasyauctionhouse.domains.Item;
+import com.raistmere.fantasyauctionhouse.repos.InventoryItemRepository;
 import com.raistmere.fantasyauctionhouse.repos.ItemRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -9,9 +11,11 @@ import org.springframework.stereotype.Component;
 public class BootStrapData implements CommandLineRunner {
 
     private final ItemRepository itemRepository;
+    private final InventoryItemRepository inventoryItemRepository;
 
-    public BootStrapData(ItemRepository itemRepository) {
+    public BootStrapData(ItemRepository itemRepository, InventoryItemRepository inventoryItemRepository) {
         this.itemRepository = itemRepository;
+        this.inventoryItemRepository = inventoryItemRepository;
     }
 
     @Override
@@ -25,7 +29,12 @@ public class BootStrapData implements CommandLineRunner {
         potionItem.setItemName("Health Potion");
         itemRepository.save(potionItem);
 
-        System.out.println("Number of items: " + itemRepository.count());
-        System.out.println(itemRepository.findAll());
+        InventoryItem inventoryItem = new InventoryItem();
+        inventoryItem.setItem(swordItem);
+        inventoryItemRepository.save(inventoryItem);
+
+        InventoryItem inventoryItem2 = new InventoryItem();
+        inventoryItem2.setItem(swordItem);
+        inventoryItemRepository.save(inventoryItem2);
     }
 }
