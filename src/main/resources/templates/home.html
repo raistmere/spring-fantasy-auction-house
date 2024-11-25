@@ -16,8 +16,8 @@
 
 <body>
     <div class="container">
+        <br><br>
         <h2>Item List:</h2>
-
         <br><br>
 
         <table class="table table-bordered table-striped">
@@ -29,6 +29,25 @@
             </thead>
             <tbody>
             <tr th:each="item : ${items}">
+                <td th:text="${item.itemName}">1</td>
+                <td th:text="${item.itemPrice}">1</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <br><br>
+        <h2>My Inventory:</h2>
+        <br><br>
+
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="item : ${inventory}">
                 <td th:text="${item.itemName}">1</td>
                 <td th:text="${item.itemPrice}">1</td>
             </tr>
