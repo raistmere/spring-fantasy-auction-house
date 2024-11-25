@@ -1,14 +1,13 @@
-package com.raistmere.fantasyauctionhouse;
+package com.raistmere.fantasyauctionhouse.domains;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-public class Item {
+@Table(name="Items")
+public class Item implements Serializable {
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     public Long Id;
