@@ -22,9 +22,22 @@ public class HomeController {
     @GetMapping("/")
     public String GetHome(Model model) {
 
-        model.addAttribute("items", itemServiceImpl.findAll());
+        return "home";
+    }
+
+    @GetMapping("/myinventory")
+    public String GetMyInventory(Model model) {
+
         model.addAttribute("inventory", inventoryItemServiceImpl.getInventoryItems());
 
-        return "home";
+        return "myinventory";
+    }
+
+    @GetMapping("/itemlist")
+    public String GetItemList(Model model) {
+
+        model.addAttribute("items", itemServiceImpl.findAll());
+
+        return "itemlist";
     }
 }
