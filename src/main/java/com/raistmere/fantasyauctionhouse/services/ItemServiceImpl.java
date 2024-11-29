@@ -30,4 +30,12 @@ public class ItemServiceImpl implements ItemService {
 
         return items;
     }
+
+    @Override
+    public Item findById(Long id) {
+
+        return itemRepository.findById(id).orElse(null);
+    }
+
+
 }
