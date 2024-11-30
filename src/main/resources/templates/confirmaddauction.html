@@ -23,26 +23,9 @@
 </div>
 
 <div class="container">
-    <br><br>
-    <h2>Auction House:</h2>
-    <a th:href="@{/auctionhouse/addauctionform}" class="btn btn-primary mt-3">Add Auction</a>
-    <br><br>
-    <table class="table table-bordered table-striped">
-        <thead class="thead-dark">
-        <tr>
-            <th>Auction Name:</th>
-            <th>Auction Price:</th>
-            <th>Actions:</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="auction : ${auctionList}">
-            <td th:text="${auction.auctionName}">1</td>
-            <td th:text="${auction.auctionPrice}">1</td>
-            <td><a th:href="@{/showconfirmbuyauction}" class="btn btn-primary">Buy Auction</a></td>
-        </tr>
-        </tbody>
-    </table>
+    <h3>Item has been added to the Auction House.</h3>
+    <a th:href="@{/auctionhouse}" class="btn btn-primary mt-3">Back to Auction House</a>
+    <a th:href="@{/auctionhouse/addauctionform}" class="btn btn-primary mt-3">Add a new auction</a>
 </div>
 </body>
 </html>

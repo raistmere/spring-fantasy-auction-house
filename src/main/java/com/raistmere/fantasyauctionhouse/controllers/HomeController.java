@@ -1,5 +1,6 @@
 package com.raistmere.fantasyauctionhouse.controllers;
 
+import com.raistmere.fantasyauctionhouse.services.AuctionServiceImpl;
 import com.raistmere.fantasyauctionhouse.services.InventoryItemServiceImpl;
 import com.raistmere.fantasyauctionhouse.services.ItemServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +13,13 @@ public class HomeController {
 
     private final ItemServiceImpl itemServiceImpl;
     private final InventoryItemServiceImpl inventoryItemServiceImpl;
+    private final AuctionServiceImpl auctionServiceImpl;
 
     @Autowired
-    public HomeController(ItemServiceImpl itemServiceImpl, InventoryItemServiceImpl inventoryItemServiceImpl) {
+    public HomeController(ItemServiceImpl itemServiceImpl, InventoryItemServiceImpl inventoryItemServiceImpl, AuctionServiceImpl auctionServiceImpl) {
         this.itemServiceImpl = itemServiceImpl;
         this.inventoryItemServiceImpl = inventoryItemServiceImpl;
+        this.auctionServiceImpl = auctionServiceImpl;
     }
 
     @GetMapping("/")
@@ -27,6 +30,8 @@ public class HomeController {
 
     @GetMapping("/auctionhouse")
     public String GetAuctionHouse(Model model) {
+
+        model.addAttribute("auctionList", auctionServiceImpl.findAllAuctions());
 
         return "auctionhouse";
     }

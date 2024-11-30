@@ -28,12 +28,12 @@
 
     <form action="#" th:action="@{/auctionhouse/showconfirmaddauction}" method="post">
         <label for="item-select">Select inventory item to auction:</label>
-        <select name="itemId" id="item-select">
+        <select name="auctionItemId" id="item-select">
             <option th:each="item : ${inventoryList}" th:value="${item.getId()}" th:text="${item.getItemName()}">
             </option>
         </select>
         <label for="price-amount">Input item price for auction:</label>
-        <input type="number" name="itemPrice" id="price-amount">
+        <input type="number" name="auctionItemPrice" id="price-amount">
         <button type="submit">Add item</button>
     </form>
     <br><br>
