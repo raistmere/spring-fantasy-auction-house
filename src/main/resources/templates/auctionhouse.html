@@ -24,21 +24,22 @@
 
 <div class="container">
     <br><br>
-    <h2>Item List:</h2>
-    <h4>(This is the static set of items in the app. Items cannot be deleted or added. This is for development testing)</h4>
+    <h2>Auction House:</h2>
+    <a th:href="@{/auctionhouse/addauctionform}" class="btn btn-primary mt-3">Add Auction</a>
     <br><br>
-
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">
         <tr>
-            <th>Name</th>
-            <th>Price</th>
+            <th>Name:</th>
+            <th>Sell Price:</th>
+            <th>Actions:</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="item : ${items}">
-            <td th:text="${item.itemName}">1</td>
-            <td th:text="${item.itemPrice}">1</td>
+        <tr th:each="auction : ${auctionList}">
+            <td th:text="${auction.itemName}">1</td>
+            <td th:text="${auction.itemPrice}">1</td>
+            <a th:href="@{/showconfirmbuyauction}" class="btn btn-primary mt-3">Buy Auction</a>
         </tr>
         </tbody>
     </table>

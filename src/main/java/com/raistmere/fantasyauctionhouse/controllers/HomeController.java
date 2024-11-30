@@ -25,6 +25,12 @@ public class HomeController {
         return "home";
     }
 
+    @GetMapping("/auctionhouse")
+    public String GetAuctionHouse(Model model) {
+
+        return "auctionhouse";
+    }
+
     @GetMapping("/myinventory")
     public String GetMyInventory(Model model) {
 

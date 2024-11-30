@@ -24,24 +24,19 @@
 
 <div class="container">
     <br><br>
-    <h2>Item List:</h2>
-    <h4>(This is the static set of items in the app. Items cannot be deleted or added. This is for development testing)</h4>
-    <br><br>
+    <h2>Add Auction Form</h2>
 
-    <table class="table table-bordered table-striped">
-        <thead class="thead-dark">
-        <tr>
-            <th>Name</th>
-            <th>Price</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="item : ${items}">
-            <td th:text="${item.itemName}">1</td>
-            <td th:text="${item.itemPrice}">1</td>
-        </tr>
-        </tbody>
-    </table>
+    <form action="#" th:action="@{/auctionhouse/showconfirmaddauction}" method="post">
+        <label for="item-select">Select inventory item to auction:</label>
+        <select name="itemId" id="item-select">
+            <option th:each="item : ${inventoryList}" th:value="${item.getId()}" th:text="${item.getItemName()}">
+            </option>
+        </select>
+        <label for="price-amount">Input item price for auction:</label>
+        <input type="number" name="itemPrice" id="price-amount">
+        <button type="submit">Add item</button>
+    </form>
+    <br><br>
 </div>
 </body>
 </html>

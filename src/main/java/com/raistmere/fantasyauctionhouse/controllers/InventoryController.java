@@ -1,7 +1,6 @@
 package com.raistmere.fantasyauctionhouse.controllers;
 
 import com.raistmere.fantasyauctionhouse.domains.InventoryItem;
-import com.raistmere.fantasyauctionhouse.domains.Item;
 import com.raistmere.fantasyauctionhouse.services.InventoryItemServiceImpl;
 import com.raistmere.fantasyauctionhouse.services.ItemServiceImpl;
 import org.springframework.stereotype.Controller;
