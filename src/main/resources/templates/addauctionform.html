@@ -26,7 +26,7 @@
     <br><br>
     <h2>Add Auction Form</h2>
 
-    <form action="#" th:action="@{/auctionhouse/showconfirmaddauction}" method="post">
+    <form action="#" th:action="@{/auctionhouse/postauction}" method="post">
         <label for="item-select">Select inventory item to auction:</label>
         <select name="auctionItemId" id="item-select">
             <option th:each="item : ${inventoryList}" th:value="${item.getId()}" th:text="${item.getItemName()}">

@@ -39,7 +39,7 @@
         <tr th:each="auction : ${auctionList}">
             <td th:text="${auction.auctionName}">1</td>
             <td th:text="${auction.auctionPrice}">1</td>
-            <td><a th:href="@{/showconfirmbuyauction}" class="btn btn-primary">Buy Auction</a></td>
+            <td><a th:href="@{/showconfirmbuyauction(auctionId=${auction.getId()})}" class="btn btn-primary">Buy Auction</a></td>
         </tr>
         </tbody>
     </table>
