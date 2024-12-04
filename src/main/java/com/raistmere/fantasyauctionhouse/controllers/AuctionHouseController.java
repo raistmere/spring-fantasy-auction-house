@@ -37,7 +37,7 @@ public class AuctionHouseController {
         Auction newAuctionItem = new Auction(inventoryItemServiceImpl.getInventoryItem(inventoryItemID).getItem(), auctionPrice);
         auctionServiceImpl.saveAuction(newAuctionItem);
 
-//        inventoryItemServiceImpl.removeInventoryItem(auctionItem.getId());
+        inventoryItemServiceImpl.removeInventoryItem(inventoryItemID);
 
         return "redirect:/auctionhouse/confirmaddauction";
     }
