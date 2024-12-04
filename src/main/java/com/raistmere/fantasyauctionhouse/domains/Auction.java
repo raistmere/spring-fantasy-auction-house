@@ -15,14 +15,12 @@ public class Auction {
     @JoinColumn(name = "fk_item_id")
     public Item auctionItem;
 
-    public String auctionName;
     public int auctionPrice;
 
     public Auction() {}
 
     public Auction(Item auctionItem, int auctionPrice) {
         this.auctionItem = auctionItem;
-        this.auctionName = auctionItem.getItemName();
         this.auctionPrice = auctionPrice;
     }
 
@@ -38,10 +36,6 @@ public class Auction {
         this.auctionItem = auctionItem;
     }
 
-    public String getAuctionName() {
-        return auctionName;
-    }
-
     public int getAuctionPrice() {
         return auctionPrice;
     }
@@ -55,14 +49,13 @@ public class Auction {
         if (o == null || getClass() != o.getClass()) return false;
 
         Auction auction = (Auction) o;
-        return auctionPrice == auction.auctionPrice && Objects.equals(id, auction.id) && Objects.equals(auctionItem, auction.auctionItem) && Objects.equals(auctionName, auction.auctionName);
+        return auctionPrice == auction.auctionPrice && Objects.equals(id, auction.id) && Objects.equals(this.auctionItem, auction.auctionItem);
     }
 
     @Override
     public int hashCode() {
         int result = Objects.hashCode(id);
         result = 31 * result + Objects.hashCode(auctionItem);
-        result = 31 * result + Objects.hashCode(auctionName);
         result = 31 * result + auctionPrice;
         return result;
     }
@@ -70,7 +63,8 @@ public class Auction {
     @Override
     public String toString() {
         return "Auction{" +
-                ", auctionName='" + auctionName + '\'' +
+                "id=" + id +
+                ", auctionItem=" + auctionItem +
                 ", auctionPrice=" + auctionPrice +
                 '}';
     }

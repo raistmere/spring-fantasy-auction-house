@@ -1,6 +1,7 @@
 package com.raistmere.fantasyauctionhouse.controllers;
 
 import com.raistmere.fantasyauctionhouse.domains.Auction;
+import com.raistmere.fantasyauctionhouse.domains.InventoryItem;
 import com.raistmere.fantasyauctionhouse.services.AuctionServiceImpl;
 import com.raistmere.fantasyauctionhouse.services.InventoryItemServiceImpl;
 import com.raistmere.fantasyauctionhouse.services.ItemServiceImpl;
@@ -31,11 +32,12 @@ public class AuctionHouseController {
     }
 
     @PostMapping("/postauction")
-    public String postAddAuctionForm(@ModelAttribute("auctionItemId") Long auctionItemId, @ModelAttribute("auctionItemPrice") int auctionItemPrice) {
+    public String postAddAuctionForm(@ModelAttribute("inventoryItemID") Long inventoryItemID, @ModelAttribute("auctionPrice") int auctionPrice) {
 
-        Auction newAuction = new Auction(itemServiceImpl.findById(auctionItemId), auctionItemPrice);
+        Auction newAuctionItem = new Auction(inventoryItemServiceImpl.getInventoryItem(inventoryItemID).getItem(), auctionPrice);
+        auctionServiceImpl.saveAuction(newAuctionItem);
 
-        auctionServiceImpl.saveAuction(newAuction);
+//        inventoryItemServiceImpl.removeInventoryItem(auctionItem.getId());
 
         return "redirect:/auctionhouse/confirmaddauction";
     }

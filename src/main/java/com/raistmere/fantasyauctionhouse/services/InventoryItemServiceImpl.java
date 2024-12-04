@@ -14,31 +14,35 @@ import java.util.List;
 public class InventoryItemServiceImpl implements InventoryItemService {
 
     private final InventoryItemRepository inventoryItemRepository;
-    private final ItemRepository itemRepository;
 
     @Autowired
-    public InventoryItemServiceImpl(InventoryItemRepository inventoryItemRepository, ItemRepository itemRepository) {
+    public InventoryItemServiceImpl(InventoryItemRepository inventoryItemRepository) {
         this.inventoryItemRepository = inventoryItemRepository;
-        this.itemRepository = itemRepository;
     }
 
     @Override
-    public List<Item> getInventoryItems() {
+    public List<InventoryItem> getInventoryItems() {
+        List<InventoryItem> inventoryItems = new ArrayList<>();
+        inventoryItems = inventoryItemRepository.findAll();
+        for (InventoryItem inventoryItem : inventoryItems) {
 
-        List<Item> inventoryItems = new ArrayList<>();
-
-        for(InventoryItem inventoryItem : inventoryItemRepository.findAll()) {
-
-            Item item = itemRepository.findById(inventoryItem.getItem().getId()).orElse(null);
-
-            if(item != null) {
-
-                inventoryItems.add(item);
-            }
+            System.out.println(inventoryItem.toString());
         }
-
-        return inventoryItems;
+        return inventoryItemRepository.findAll();
     }
+
+    @Override
+    public InventoryItem getInventoryItem(Long id) {
+
+        return inventoryItemRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public void removeInventoryItem(Long id) {
+
+        inventoryItemRepository.deleteById(id);
+    }
+
 
     @Override
     public void save(InventoryItem inventoryItem) {

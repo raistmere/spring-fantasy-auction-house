@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface InventoryItemService {
 
-    public List<Item> getInventoryItems();
+    public List<InventoryItem> getInventoryItems();
+    public InventoryItem getInventoryItem(Long id);
+    public void removeInventoryItem(Long id);
     public void save(InventoryItem inventoryItem);
 }

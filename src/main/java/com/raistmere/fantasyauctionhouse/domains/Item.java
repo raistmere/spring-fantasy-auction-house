@@ -13,14 +13,12 @@ public class Item implements Serializable {
     public Long Id;
 
     public String itemName;
-    public int itemPrice;
 
     public Item() {
     }
 
-    public Item(String itemName, int itemPrice) {
+    public Item(String itemName) {
         this.itemName = itemName;
-        this.itemPrice = itemPrice;
     }
 
     public Long getId() {
@@ -37,14 +35,6 @@ public class Item implements Serializable {
 
     public void setItemName(String itemName) {
         this.itemName = itemName;
-    }
-
-    public int getItemPrice() {
-        return itemPrice;
-    }
-
-    public void setItemPrice(int itemPrice) {
-        this.itemPrice = itemPrice;
     }
 
     @Override
@@ -65,7 +55,8 @@ public class Item implements Serializable {
     @Override
     public String toString() {
         return "Item{" +
-                "itemName='" + itemName + '\'' +
+                "Id=" + Id +
+                ", itemName='" + itemName + '\'' +
                 '}';
     }
 }
